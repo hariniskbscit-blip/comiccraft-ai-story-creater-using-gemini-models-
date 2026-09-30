@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comic Preview</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="wide">
+    <h1>{{ title }}</h1>
+    <section class="card story"><h2>Story</h2><p>{{ story }}</p></section>
+    {% for page in pages %}
+    <section class="page">
+      <h3>Page {{ page.number }}</h3>
+      {% for row in page.rows %}
+      <div class="row">
+        {% for p in row %}
+        <figure class="panel">
+          <img src="{{ p.image_url }}" alt="Panel {{ p.index }}">
+          <figcaption>{{ p.caption }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endfor %}
+    <div class="actions">
+      <form method="post" action="/export/{{ comic_id }}"><button type="submit">Export as PDF</button></form>
+      <a class="link" href="/">Create another</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComicCraft</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>🎨 ComicCraft</h1>
+    <p class="sub">AI comic story creator powered by Gemini</p>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    <form method="post" action="/generate" onsubmit="document.getElementById('btn').textContent='Creating your comic...';document.getElementById('btn').disabled=true;">
+      <label>Story idea</label>
+      <textarea name="idea" rows="4" required placeholder="A robot who wants to learn how to paint..."></textarea>
+      <label>Genre</label>
+      <select name="genre">
+        <option>adventure</option><option>comedy</option><option>sci-fi</option>
+        <option>fantasy</option><option>mystery</option><option>superhero</option>
+      </select>
+      <label>Art style</label>
+      <input name="style" value="colorful cartoon">
+      <label>Number of panels (1-12)</label>
+      <input type="number" name="num_panels" value="4" min="1" max="12">
+      <button id="btn" type="submit">Generate Comic</button>
+    </form>
+  </main>
+</body>
+</html>

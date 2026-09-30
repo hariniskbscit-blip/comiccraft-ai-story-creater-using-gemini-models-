@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+python-dotenv
+google-genai
+fpdf2
+Pillow
+# Optional - only needed for real Stable Diffusion images (GPU recommended)
+# diffusers
+# transformers
+# accelerate
+# torch
